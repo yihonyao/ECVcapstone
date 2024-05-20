@@ -3,15 +3,23 @@
 ## 資料夾架構
 
 ```
+Code
+├── finalized.py
+├── India_rawdata.py
+├── US_rawdata.py
+├── 自動化下載及解壓縮.py
+└── 資料串接.py
+
 Data
+├── power bi
+│   └── ECV report_final.pbix
 ├── final_data
-│   └── finalized.py
+│   └── final_data.csv
 ├── processed_data
-│   └── 資料串接.py
+│   └── processed_data.csv
 ├── raw_data
-│   ├── India_rawdata.py
-│   ├── US_rawdata.py
-│   ├── 自動化下載及解壓縮.py
+│   ├── India_rawdata.csv
+│   ├── US_rawdata.csv
 │   └── XML_data
 └── setup
     ├── 公司基本資料.xlsx
