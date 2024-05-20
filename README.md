@@ -1,6 +1,6 @@
-# Project: Financial Data Processing and Analysis for Cloud Service Companies
+# Project: Financial Data Processing for US and Indian Companies
 
-## Folder Structure
+## 壹、資料夾架構
 
 ```
 ├── finalized.py
@@ -11,116 +11,115 @@
 ├── raw_data
 │   └── XML_data
 └── setup
-    ├── company_basic_info.xlsx
-    ├── account_mapping.xlsx
-    └── financial_metrics_formula.xlsx
+    ├── 公司基本資料.xlsx
+    ├── 會計科目表.xlsx
+    └── 財務指標公式.xlsx
 ```
 
-## File Descriptions
+## 貳、檔案說明
 
-### 1. Setup Files
+### 1. Setup Files (設定檔案)
 
-These files contain essential information for adding new target companies and defining the financial framework.
+這些檔案包含新增目標公司及定義財務框架所需的基本信息。
 
-#### a. Company Basic Info (company_basic_info.xlsx)
+#### a. 公司基本資料 (company_basic_info.xlsx)
 
-**Structure:**
+**結構:**
 
 | company (full name)                           | StartMonth | country | ServiceType  |
 |-----------------------------------------------|------------|---------|--------------|
 | COGNIZANT TECHNOLOGY SOLUTIONS CORP           | 1          | US      | IT Services  |
 
-**Note:** The company name must match the data source.
+**補充說明:** 公司名稱須和資料源相符。
 
-#### b. Account Mapping (account_mapping.xlsx)
+#### b. 會計科目表 (account_mapping.xlsx)
 
-**Structure:**
+**結構:**
 
-| Target_Account | Company A Account Name        | Company B Account Name        |
+| Target_Account | 公司A會計科目名稱             | 公司B會計科目名稱             |
 |----------------|-------------------------------|-------------------------------|
-| Revenue        | Revenue used by Company A     | Revenue used by Company B     |
+| Revenue        | A公司使用的Revenue科目名稱    | B公司使用的Revenue科目名稱    |
 
-**Note:** The company name must match the company basic info.
+**補充說明:** 公司名稱須和公司基本資料相符。
 
-#### c. Financial Metrics Formula (financial_metrics_formula.xlsx)
+#### c. 財務指標公式 (financial_metrics_formula.xlsx)
 
-**Structure:**
+**結構:**
 
 | Description             | Formula                                 |
 |-------------------------|-----------------------------------------|
 | NI_Margin_Ratio         | (NetIncomeLoss / Revenues) * 100        |
 
-**Note:** The formula's account names must refer to the desired account names in the account mapping.
+**補充說明:** formula的會計項目名稱需參照會計科目表欲抓取的會計項目。
 
-## Usage Instructions
+## 參、操作方式說明
 
-### 1. Adding a New Target Company
+### 1. 新增分析標的 (Adding a New Target Company)
 
-#### a. US Company
+#### a. US Company (美國公司)
 
 1. **Find the company on EDGAR:**
-   - Search for the company (e.g., Accenture) using its full name as shown in the search bar.
-   - Ensure the company name is in uppercase.
+   - 搜尋公司（例如：Accenture），使用其完整名稱。
+   - 確保公司名稱全為大寫。
 
    [EDGAR Search](https://www.sec.gov/edgar/search/)
 
 2. **Determine the fiscal year start month:**
-   - Browse filing types and set the format to 10-K.
-   - Check the "Reporting for" field. If it ends on 8/31, the fiscal year starts in September.
+   - Browse filing types並將格式設為10-K。
+   - 查看"Reporting for"欄，若結束於8/31，則會計年度起始月份為9月。
 
-#### b. Indian Company
+#### b. Indian Company (印度公司)
 
 1. **Find the company on NSE:**
-   - Search for the company (e.g., Infosys Limited).
-   - Choose "Annual" for Period Ended.
-   - The company name in the search bar must match exactly (Infosys Limited).
+   - 搜尋公司（例如：Infosys Limited）。
+   - 選擇"Annual"（年報）作為Period Ended。
+   - 搜尋欄中的公司名稱須完全一致（例如：Infosys Limited）。
 
    [NSE Corporate Filings](https://www.nseindia.com/companies-listing/corporate-filings-financial-results)
 
 2. **Determine the fiscal year start month:**
-   - Check the Period Ended field to determine the fiscal year start month (e.g., April for Infosys).
+   - 從Period Ended欄可得知會計年度起始月份（例如：Infosys的起始月份為4月）。
 
 3. **Download the financial reports:**
-   - Right-click the XBRL file link and save it as `Company Name_Year.xml` (e.g., Infosys Limited_2024.xml).
+   - 右鍵點選XBRL檔案連結，將其保存為`Company Name_Year.xml`（例如：Infosys Limited_2024.xml）。
 
 4. **Organize the XML data:**
-   - Create a folder named `XML_data`.
-   - Within `XML_data`, create a folder for each company using its full name.
-   - Save each company's XML files in its respective folder.
+   - 創建資料夾`XML_data`。
+   - 在`XML_data`內為每家公司創建一個資料夾，使用公司全名。
+   - 將各公司的XML檔案保存到各自的資料夾內。
 
-### 2. Add Account Mapping
+### 2. 新增會計科目表 (Add Account Mapping)
 
 1. **Find and add the company's account names:**
-   - For each new company, locate the financial report.
-   - Identify the account items (e.g., Revenues) and find their tags (account names used by the company).
-   - Add these account names to the account mapping file.
+   - 尋找公司的財務報表。
+   - 確認會計項目名稱並新增到會計科目表中。
 
-### 3. Generate Raw Data
+### 3. 產出 rawdata (Generate Raw Data)
 
-#### a. US Company
+#### a. US Company (美國公司)
 
 1. **Run `download_and_extract.py`**:
-   - This script will create a `rawdata` folder containing all the source data.
+   - 產生`rawdata`資料夾，包含所有資料源。
 
 2. **Run `US_rawdata.py`**:
-   - This script will generate `US_rawdata.csv`.
+   - 產生`US_rawdata.csv`。
 
-#### b. Indian Company
+#### b. Indian Company (印度公司)
 
 1. **Run `India_rawdata.py`**:
-   - This script will generate `India_rawdata.csv`.
+   - 產生`India_rawdata.csv`。
 
 2. **Check exchange rates in `India_rawdata.py`**:
-   - Ensure exchange rates for all fiscal years are present.
-   - Add missing exchange rates as needed (e.g., `2025: exchange_rate`).
+   - 確認所有會計年度的匯率資料是否存在。
+   - 新增缺少的匯率資料（例如：`2025: 匯率數字`）。
 
-### 4. Generate Processed Data
+### 4. 產出 Processed_data (Generate Processed Data)
 
-1. **Run `data_merge.py`**:
-   - This script will generate `processed_data.csv` in the `processed_data` folder, including harmonized financial metrics and adjusted fiscal years.
+1. **Run `資料串接.py`**:
+   - 產生`processed_data.csv`，包含一致化的財務指標及調整後的會計年度。
 
-### 5. Generate Final Data
+### 5. 產出 Final_data (Generate Final Data)
 
 1. **Run `finalized.py`**:
-   - This script will generate `Final_data`.
-   - Load `Final_data` into PowerBI for further analysis.
+   - 產生`Final_data`。
+   - 將`Final_data`匯入PowerBI進行進一步分析。
