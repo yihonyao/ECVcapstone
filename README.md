@@ -12,7 +12,8 @@ Code
 
 Data
 ├── power bi
-│   └── ECV report_final.pbix
+│   ├── ECV report_final.pbix
+│   └── db_ECV final.xlsx
 ├── final_data
 │   └── final_data.csv
 ├── processed_data
@@ -143,3 +144,4 @@ Data
 
 ### 6. Power Bi Dashboard 
 1. 儀表板連結：[https://app.powerbi.com/viewr=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D](https://app.powerbi.com/view?r=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D)
+2. 總資料庫檔案存放在「db_ECV final.xlsx」當中，內含各分析標的近五年之財務指標等資訊，資料取自各公司年度財務報表
