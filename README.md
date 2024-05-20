@@ -3,12 +3,14 @@
 ## 資料夾架構
 
 ```
-├── finalized.py
-├── India_rawdata.py
-├── US_rawdata.py
-├── 自動化下載及解壓縮.py
-├── 資料串接.py
+├── final_data
+│   └── finalized.py
+├── processed_data
+│   └── 資料串接.py
 ├── raw_data
+│   ├── India_rawdata.py
+│   ├── US_rawdata.py
+│   ├── 自動化下載及解壓縮.py
 │   └── XML_data
 └── setup
     ├── 公司基本資料.xlsx
