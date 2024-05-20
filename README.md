@@ -1,6 +1,6 @@
 # Project: Financial Data Processing for US and Indian Companies
 
-## 壹、資料夾架構
+## 資料夾架構
 
 ```
 ├── finalized.py
@@ -16,7 +16,7 @@
     └── 財務指標公式.xlsx
 ```
 
-## 貳、檔案說明
+## 檔案說明
 
 ### 1. Setup Files (設定檔案)
 
@@ -52,7 +52,7 @@
 
 **補充說明:** formula的會計項目名稱需參照會計科目表欲抓取的會計項目。
 
-## 參、操作方式說明
+## 操作方式說明
 
 ### 1. 新增分析標的 (Adding a New Target Company)
 
@@ -115,7 +115,7 @@
 
 ### 4. 產出 Processed_data (Generate Processed Data)
 
-1. **Run `資料串接.py`**:
+1. **Run `data_merge.py`**:
    - 產生`processed_data.csv`，包含一致化的財務指標及調整後的會計年度。
 
 ### 5. 產出 Final_data (Generate Final Data)
