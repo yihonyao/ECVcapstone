@@ -1,6 +1,4 @@
-Here is the reformatted README for the GitHub repository:
-
-# Project: Financial Data Processing for US and Indian Companies
+# Project: Financial Data Processing and Analysis for Cloud Service Companies
 
 ## Folder Structure
 
