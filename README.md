@@ -127,5 +127,5 @@
 
 ### 5. 產出 Final_data (Generate Final Data)
 
-1. **Run `資料串接.py`**:
-   - 執行「資料串接.py」，產出 Final_data，並將 Final_data 輸入進 PowerBI。
+1. **Run `Finalized.py`**:
+   - 執行「finalized.py」，產出 Final_data.csv，並將 Final_data 輸入進 PowerBI。
