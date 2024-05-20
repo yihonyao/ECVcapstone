@@ -142,4 +142,4 @@ Data
    - 執行「finalized.py」，產出 Final_data.csv，並將 Final_data 輸入進 PowerBI。
 
 ### 6. Power Bi Dashboard 
-1. 儀表板連結：https://app.powerbi.com/viewr=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D
+1. 儀表板連結：[https://app.powerbi.com/viewr=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D](https://app.powerbi.com/view?r=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D)
