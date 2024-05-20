@@ -63,10 +63,13 @@
    - 確保公司名稱全為大寫。
 
    [EDGAR Search](https://www.sec.gov/edgar/search/)
+   ![Folder Structure](README/1.png) 
 
-2. **Determine the fiscal year start month:**
+3. **Determine the fiscal year start month:**
    - Browse filing types並將格式設為10-K。
    - 查看"Reporting for"欄，若結束於8/31，則會計年度起始月份為9月。
+  
+   ![Folder Structure](README/2.png) 
 
 #### b. Indian Company (印度公司)
 
@@ -76,23 +79,29 @@
    - 搜尋欄中的公司名稱須完全一致（例如：Infosys Limited）。
 
    [NSE Corporate Filings](https://www.nseindia.com/companies-listing/corporate-filings-financial-results)
+   ![Folder Structure](README/3.png) 
 
-2. **Determine the fiscal year start month:**
+3. **Determine the fiscal year start month:**
    - 從Period Ended欄可得知會計年度起始月份（例如：Infosys的起始月份為4月）。
 
-3. **Download the financial reports:**
+4. **Download the financial reports:**
    - 右鍵點選XBRL檔案連結，將其保存為`Company Name_Year.xml`（例如：Infosys Limited_2024.xml）。
 
-4. **Organize the XML data:**
+5. **Organize the XML data:**
    - 創建資料夾`XML_data`。
    - 在`XML_data`內為每家公司創建一個資料夾，使用公司全名。
    - 將各公司的XML檔案保存到各自的資料夾內。
+
+   ![Folder Structure](README/4.png)
+   ![Folder Structure](README/5.png) 
 
 ### 2. 新增會計科目表 (Add Account Mapping)
 
 1. **Find and add the company's account names:**
    - 尋找公司的財務報表。
    - 確認會計項目名稱並新增到會計科目表中。
+   
+   ![Folder Structure](README/6.png) 
 
 ### 3. 產出 rawdata (Generate Raw Data)
 
@@ -112,6 +121,8 @@
 2. **Check exchange rates in `India_rawdata.py`**:
    - 確認所有會計年度的匯率資料是否存在。
    - 新增缺少的匯率資料（例如：`2025: 匯率數字`）。
+
+   ![Folder Structure](README/7.png) 
 
 ### 4. 產出 Processed_data (Generate Processed Data)
 
