@@ -3,6 +3,7 @@
 ## 資料夾架構
 
 ```
+Data
 ├── final_data
 │   └── finalized.py
 ├── processed_data
