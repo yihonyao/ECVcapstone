@@ -20,9 +20,9 @@ def read_company_info(country:str='all',archive_dir='./setup/公司基本資料.
     
     company_df=pd.read_excel(archive_dir)
     if country == 'all':
-        company_name=list(company_df['公司名稱'])
+        company_name=list(company_df['company'])
     else:
-        company_name=list(company_df[company_df['國家']==country]['公司名稱'])
+        company_name=list(company_df[company_df['country']==country]['company'])
     return company_name
 
 def parse_xml(xml_file):
@@ -68,12 +68,12 @@ for company in companies:
     start_year = current_year - 5
 
     # List of XML files for the current company
-    xml_files = [f'./XML_data/{company}/{company} {start_year}.xml',
-                 f'./XML_data/{company}/{company} {start_year + 1}.xml',
-                 f'./XML_data/{company}/{company} {start_year + 2}.xml',
-                 f'./XML_data/{company}/{company} {start_year + 3}.xml',
-                 f'./XML_data/{company}/{company} {start_year + 4}.xml',
-                 f'./XML_data/{company}/{company} {start_year + 5}.xml']
+    xml_files = [f'./raw_data/XML_data/{company}/{company} {start_year}.xml',
+                 f'./raw_data/XML_data/{company}/{company} {start_year + 1}.xml',
+                 f'./raw_data/XML_data/{company}/{company} {start_year + 2}.xml',
+                 f'./raw_data/XML_data/{company}/{company} {start_year + 3}.xml',
+                 f'./raw_data/XML_data/{company}/{company} {start_year + 4}.xml',
+                 f'./raw_data/XML_data/{company}/{company} {start_year + 5}.xml']
     
     # Check if the XML file for 2023 exists for LTIM company
     if company == 'LTIMindtree Limited' and not os.path.exists(xml_files[-1]):
@@ -142,5 +142,5 @@ for index, row in combined_df.iterrows():
 
 
 # Save the combined DataFrame to a new CSV file
-combined_csv_file = './India_rawdata.csv'
+combined_csv_file = './raw_data/India_raw_data.csv'
 combined_df.to_csv(combined_csv_file, index=False)
