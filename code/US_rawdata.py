@@ -19,6 +19,8 @@ def read_company_info(country:str='all',archive_dir='./setup/公司基本資料.
         company_name=list(company_df['company'])
     else:
         company_name=list(company_df[company_df['country']==country]['company'])
+
+    #company_name=list(map(lambda x: x.upper(), company_name))
     return company_name
 
 def read_account_list(company_name:str,archive_dir='./setup/會計科目表.xlsx'):
@@ -55,7 +57,7 @@ def pivot_table(company_list:list):
         #從sub檔案裡抓取company上傳年報的adsh碼
         print(f'Extracting {company} Financial Statements...')
         #抓取出company t~t-5年的sub資料
-        adsh_df=COMPANY_SUB.loc[company,["adsh"]]
+        adsh_df=COMPANY_SUB.loc[company.upper(),["adsh"]]
         account_list=read_account_list(company)
         for name,adsh_row in adsh_df.iterrows():
             adsh = adsh_row["adsh"]
@@ -67,7 +69,7 @@ def pivot_table(company_list:list):
                 filt = (Company_FS['tag'] == account) & (Company_FS['dimh'] == '0x00000000') & ((Company_FS['qtrs'] == 4)|(Company_FS['qtrs'] == 0))
         #'dimh' = '0x00000000'代表抓的是科目的總金額，而設定qtrs的目的是為了避免公司上上傳財報格式不一致，例如insight在num檔案裡包含了季報的數字，而且將季報的dimh也設定為0x00000000，因此會導致抓取到季報金額以及Q4會計入兩次全年金額
                 
-                Company_FS_copy.loc[filt, 'company'] = company #將抓取到的dataframe新增一欄公司名稱
+                Company_FS_copy.loc[filt, 'company'] = company.upper() #將抓取到的dataframe新增一欄公司名稱
                 Account_df = pd.concat([Account_df, Company_FS_copy.loc[filt, ['company','tag', 'ddate', 'value']]])
         print(f'Finished Extracting {company} Account...\n')    
     Account_df.reset_index(drop=True, inplace=True)
