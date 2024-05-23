@@ -103,7 +103,7 @@ def calculate_factor_scores_and_ranks(df):
     return df
 
 # Load the data
-combined_df = pd.read_csv('./processed_data.csv')
+combined_df = pd.read_csv('./processed_data/processed_data.csv')
 
 # Check and rename columns if necessary
 print("Original columns:", combined_df.columns)
@@ -123,4 +123,4 @@ transformed_df = calculate_factor_scores_and_ranks(standarized_df)
 final_df = pd.merge(original_df, transformed_df[['company', 'year', 'Profitability_Score', 'Risk_Score', 'Growth_Rate_Score', 'Yearly_Score', 'Yearly_Rank', 'Total_Score', 'Total_Rank']], on=['company', 'year'])
 
 # Save the final data
-final_df.to_csv('./final_data.csv', index=False)
+final_df.to_csv('./final_data/final_data.csv', index=False)
