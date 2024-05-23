@@ -71,14 +71,23 @@ def pivot_table(company_list:list):
                 
                 Company_FS_copy.loc[filt, 'company'] = company.upper() #將抓取到的dataframe新增一欄公司名稱
                 Account_df = pd.concat([Account_df, Company_FS_copy.loc[filt, ['company','tag', 'ddate', 'value']]])
-        print(f'Finished Extracting {company} Account...\n')    
+        print(f'Finished Extracting {company} Account...\n')
     Account_df.reset_index(drop=True, inplace=True)
-    Account_df_unique = Account_df.drop_duplicates() #財報大多會呈現兩年至三年的比較資料，因此抓下來後要刪除重複的row，只留下每年的一筆資料
+        
+    #接著處理財報重編的問題，如果一間公司有重編財報，則該間公司同年份同科目的資料會有多筆，如果不進行處理，則在建立pivot table時會導致金額有誤，操作邏輯如下:重編的財報一定會是較大的Index，因此如果公司名稱、科目名稱、日期相同，留下index較大的那筆。    
+    #先創建一個index column
+    Account_df['original_index'] = Account_df.index
+    #依據company,tag,ddate進行groupby後挑選各組裡index最大，也就是最新的資料，這樣就能解決重編以及重複的問題，並且將最大那筆的原index取出
+    idx = Account_df.groupby(['company', 'tag', 'ddate'])['original_index'].idxmax()
+    #根據取出的原index去取出Account dataframe的row
+    filtered_df = Account_df.loc[idx].reset_index(drop=True)
+    #再將original index刪掉
+    filtered_df = filtered_df.drop(columns=['original_index'])
+        
+    Account_df_unique_copy = filtered_df.copy()
+    Account_df_unique_copy['year'] = pd.to_datetime(Account_df_unique_copy['ddate'], format='%Y%m%d').dt.year 
+    Account_df_unique_copy.rename(columns={'ddate': 'Enddate'}, inplace=True)   
     #建立pivot table
-    Account_df_unique_copy = Account_df_unique.copy()
-    Account_df_unique_copy['year'] = pd.to_datetime(Account_df_unique['ddate'], format='%Y%m%d').dt.year 
-    Account_df_unique_copy.rename(columns={'ddate': 'Enddate'}, inplace=True)
-
     pivot_df = Account_df_unique_copy.pivot_table(index=['company','year','Enddate'], columns='tag', values='value') #建立company、year為row，tag為column的pivot table
     pivot_df.reset_index(inplace=True)
     return pivot_df
