@@ -18,7 +18,7 @@ def read_rawdata(archive_dir='./raw_data'):
     
     '''讀取所有的rawdata'''
     
-    rawdata_filenames = [file for file in os.listdir(archive_dir) if file.endswith('.csv')]
+    rawdata_filenames = [file for file in os.listdir(archive_dir) if file.endswith('raw_data.csv')]
     rawdata_dfs=[]
     
     for rawdata_filename in rawdata_filenames:
@@ -84,7 +84,11 @@ def dealwith_specific_account(COMBINED_RAW_DF:pd.DataFrame):
           
         if (company_df['DepreciationAndAmortization']==0).all():
             company_df.loc[:, 'DepreciationAndAmortization']=company_df['Depreciation']+company_df['Amortization']
-            
+
+        if (company_df['InterestExpense']==0).all():
+            company_df.loc[:, 'InterestExpense']=company_df['InterestPaidNet']
+
+
         company_df['LastYearRevenues'] = company_df['Revenues'].shift(1)
         company_df['LastYearNetIncomeLoss'] = company_df['NetIncomeLoss'].shift(1)
         company_df['LastYearEarningsPerShareBasic'] = company_df['EarningsPerShareBasic'].shift(1)
@@ -186,7 +190,7 @@ def output(pivot_df:pd.DataFrame,dir='./processed_data'):
     if dir=='./processed_data':
         if not os.path.isdir(dir):
             os.makedirs(dir)
-        pivot_df.to_csv(f'./{dir}/processed_data.csv', index=False)
+        pivot_df.to_csv(f'{dir}/processed_data.csv', index=False)
         print(f'Already build processed_data.csv at processed_data folder.')
 
 
