@@ -10,7 +10,7 @@ SUB_FILES=glob("./raw_data/*sub.tsv")
 NUM_FILES=glob("./raw_data/*num.tsv")
 
 #讀取目標公司的基本資料
-def read_company_info(country:str='all',archive_dir='./setup/公司基本資料.xlsx'):
+def read_company_name(country:str='all',archive_dir='./setup/公司基本資料.xlsx'):
     
     '''從設定檔讀取公司基本資料'''
     
@@ -106,7 +106,7 @@ def output(pivot_df:pd.DataFrame,dir='./'):
     
 
 if __name__ == '__main__':
-    US_COMPANY=read_company_info('US')
+    US_COMPANY=read_company_name('US')
     COMPANY_SUB,COMPANY_NUM=readfiles(SUB_FILES,NUM_FILES)
     PIVOT_TABLE=pivot_table(US_COMPANY)
     output(PIVOT_TABLE,'./raw_data') #可指定要存放的路徑
