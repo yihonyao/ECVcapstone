@@ -1,4 +1,4 @@
-# Project: Financial Data Processing for US and Indian Companies
+# Project: 全球雲端指標性廠商之財務分析與競爭態勢研究
 
 ## 資料夾架構
 
@@ -27,6 +27,8 @@ Data
     ├── 會計科目表.xlsx
     └── 財務指標公式.xlsx
 ```
+## Demo影片連結
+https://youtu.be/py5WYrrV1eM
 
 ## 檔案說明
 
