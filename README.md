@@ -27,7 +27,7 @@ Data
     ├── 會計科目表.xlsx
     └── 財務指標公式.xlsx
 ```
-## 程式Demo影片連結
+## 程式 Demo 影片連結
 https://youtu.be/py5WYrrV1eM
 
 ## 檔案說明
