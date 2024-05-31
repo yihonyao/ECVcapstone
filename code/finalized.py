@@ -107,7 +107,7 @@ def calculate_factor_scores_and_ranks(df):
 # Load the data
 combined_df = pd.read_csv('./processed_data/processed_data.csv')
 
-def delete_tsv_files(directory='./rawdata'):
+def delete_tsv_files(directory='./raw_data'):
     """
     產出final data之後刪除指定目錄中所有副檔名為 .tsv 的檔案
 
