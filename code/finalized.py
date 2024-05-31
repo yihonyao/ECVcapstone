@@ -1,6 +1,8 @@
 from sklearn.preprocessing import StandardScaler
 import datetime
 import pandas as pd
+import os
+import glob
 
 def standarize(df: pd.DataFrame) -> pd.DataFrame:
     # Ensure 'year' and 'company' columns are present and correctly named
@@ -105,6 +107,26 @@ def calculate_factor_scores_and_ranks(df):
 # Load the data
 combined_df = pd.read_csv('./processed_data/processed_data.csv')
 
+def delete_tsv_files(directory='./rawdata'):
+    """
+    產出final data之後刪除指定目錄中所有副檔名為 .tsv 的檔案
+
+    """
+    # 構建匹配 .tsv 檔案的模式
+    tsv_pattern = os.path.join(directory, '*.tsv')
+    
+    # 使用 glob 找到所有匹配的檔案
+    tsv_files = glob.glob(tsv_pattern)
+    
+    # 遍歷並刪除每個 .tsv 檔案
+    for file_path in tsv_files:
+        try:
+            os.remove(file_path)
+            print(f"已刪除: {file_path}")
+        except OSError as e:
+            print(f"刪除 {file_path} 時發生錯誤: {e}")
+
+
 # Check and rename columns if necessary
 print("Original columns:", combined_df.columns)
 if 'Year' in combined_df.columns:
@@ -115,9 +137,11 @@ if 'Company' in combined_df.columns:
 # Keep a copy of the original data for final output
 original_df = combined_df.copy()
 
-# Standardize the data and calculate factor scores and ranks
-standarized_df = standarize(combined_df)
-transformed_df = calculate_factor_scores_and_ranks(standarized_df)
+if __name__== '__main__':
+    # Standardize the data and calculate factor scores and ranks
+    standarized_df = standarize(combined_df)
+    transformed_df = calculate_factor_scores_and_ranks(standarized_df)
+    delete_tsv_files()
 
 # Combine the original data with the calculated scores
 final_df = pd.merge(original_df, transformed_df[['company', 'year', 'Profitability_Score', 'Risk_Score', 'Growth_Rate_Score', 'Yearly_Score', 'Yearly_Rank', 'Total_Score', 'Total_Rank']], on=['company', 'year'])
