@@ -74,7 +74,7 @@ https://youtu.be/py5WYrrV1eM
 
 1. **Find the company on EDGAR:**
    - 以新增 US 國家為例，假設要新增的是 Accenture
-   - 公司名稱:以 EDGAR 搜尋 Accenture 後，以搜尋欄的公司全稱 Accenture plc 為主，並且全 為大寫。
+   - 公司名稱:以 EDGAR 搜尋 Accenture 後，以搜尋欄的公司全稱 Accenture plc 為主。
 
    [EDGAR Search](https://www.sec.gov/edgar/search/)
    ![Folder Structure](README/1.png) 
