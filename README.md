@@ -11,7 +11,7 @@ ECVcapstone
 │   └── final_data.csv
 ├── processed_data
 │   └── processed_data.csv
-├── raw_data
+├── rawdata
 │   ├── India_raw_data.csv
 │   ├── US_raw_data.csv
 │   └── XML_data
