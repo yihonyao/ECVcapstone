@@ -6,8 +6,8 @@ from sklearn.preprocessing import StandardScaler
 import os
 
 
-SUB_FILES=glob("./raw_data/*sub.tsv")
-NUM_FILES=glob("./raw_data/*num.tsv")
+SUB_FILES=glob("./rawdata/*sub.tsv")
+NUM_FILES=glob("./rawdata/*num.tsv")
 
 #讀取目標公司的基本資料
 def read_company_name(country:str='all',archive_dir='./setup/公司基本資料.xlsx'):
@@ -109,4 +109,4 @@ if __name__ == '__main__':
     US_COMPANY=read_company_name('US')
     COMPANY_SUB,COMPANY_NUM=readfiles(SUB_FILES,NUM_FILES)
     PIVOT_TABLE=pivot_table(US_COMPANY)
-    output(PIVOT_TABLE,'./raw_data') #可指定要存放的路徑
+    output(PIVOT_TABLE,'./rawdata') #可指定要存放的路徑
