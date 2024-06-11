@@ -43,7 +43,7 @@ def extract(filename: str, file_path: str):
     # Renaming should be done outside the loop, after all files are extracted
         os.rename(os.path.join(file_path, 'num.tsv'), os.path.join(file_path, f'{filename_without_extension}_num.tsv'))
         os.rename(os.path.join(file_path, 'sub.tsv'), os.path.join(file_path, f'{filename_without_extension}_sub.tsv'))
-    os.remove(f'./raw_data/'+filename)
+    os.remove(f'./rawdata/'+filename)
     print(f'remove {filename}\n...')        
 
 def us_company_upload_month():
@@ -93,7 +93,7 @@ def get_filenames():
 if __name__ == '__main__':
     FILENAMES=get_filenames()
     for filename in FILENAMES:
-        download_sec_file_by_requests(filename, './raw_data')
-        extract(filename, './raw_data')
-    print('Already extracted sub,num file to raw_data file_folder and remove zipfile.')
+        download_sec_file_by_requests(filename, './rawdata')
+        extract(filename, './rawdata')
+    print('Already extracted sub,num file to rawdata file_folder and remove zipfile.')
     print('-----------------------------------------------------------------')
