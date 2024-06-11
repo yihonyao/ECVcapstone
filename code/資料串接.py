@@ -14,7 +14,8 @@ def read_company_info(country:str='all',archive_dir='./setup/公司基本資料.
     company_info_df=pd.read_excel(archive_dir)
     return company_info_df
 
-def read_rawdata(archive_dir='./raw_data'):
+def read_rawdata(archive_dir='./raw
+data'):
     
     '''讀取所有的rawdata'''
     
