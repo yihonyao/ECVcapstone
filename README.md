@@ -3,14 +3,7 @@
 ## 資料夾架構
 
 ```
-Code
-├── finalized.py
-├── India_rawdata.py
-├── US_rawdata.py
-├── 自動化下載及解壓縮.py
-└── 資料串接.py
-
-Data
+ECVcapstone
 ├── power bi
 │   ├── ECV report_final.pbix
 │   └── db_ECV final.xlsx
@@ -19,13 +12,18 @@ Data
 ├── processed_data
 │   └── processed_data.csv
 ├── raw_data
-│   ├── India_rawdata.csv
-│   ├── US_rawdata.csv
+│   ├── India_raw_data.csv
+│   ├── US_raw_data.csv
 │   └── XML_data
 └── setup
-    ├── 公司基本資料.xlsx
-    ├── 會計科目表.xlsx
-    └── 財務指標公式.xlsx
+│   ├── 公司基本資料.xlsx
+│   ├── 會計科目表.xlsx
+│   └── 財務指標公式.xlsx
+├── finalized.py
+├── India_rawdata.py
+├── US_rawdata.py
+├── 自動化下載及解壓縮.py
+└── 資料串接.py
 ```
 ## 程式 Demo 影片連結
 https://youtu.be/py5WYrrV1eM
@@ -50,8 +48,8 @@ https://youtu.be/py5WYrrV1eM
 
 **結構:**
 
-| Target_Account | 公司A會計科目名稱             | 公司B會計科目名稱             |
-|----------------|-------------------------------|-------------------------------|
+| Target_Account | 公司A名稱                    | 公司B名稱                    |
+|----------------|-----------------------------|------------------------------|
 | Revenue        | A公司使用的Revenue科目名稱    | B公司使用的Revenue科目名稱    |
 
 **補充說明:** 公司名稱須和公司基本資料相符。
@@ -142,7 +140,7 @@ https://youtu.be/py5WYrrV1eM
 ### 5. 產出 Final_data (Generate Final Data)
 
 1. **Run `Finalized.py`**:
-   - 執行「finalized.py」，產出 Final_data.csv，並將 Final_data 輸入進 PowerBI。
+   - 執行「finalized.py」，產出 Final_data.csv，並將 Final_data 輸入進 PowerBI，並且為了重複性使用，會將SEC下載的壓縮檔做刪除，以避免後續執行後產生error。
 
 ### 6. Power Bi Dashboard 
 1. 儀表板連結：[https://app.powerbi.com/viewr=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D](https://app.powerbi.com/view?r=eyJrIjoiNDQ4NjdhOWUtNWYwZC00YjRmLWI5NWItZjMyODVkZDVkNmEzIiwidCI6IjI0ZGI0MDhjLWE3YzgtNGYzYS04ZmY5LTEwODYwYTQ4ZDIzNSIsImMiOjEwfQ%3D%3D)
