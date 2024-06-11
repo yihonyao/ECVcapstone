@@ -68,12 +68,12 @@ for company in companies:
     start_year = current_year - 5
 
     # List of XML files for the current company
-    xml_files = [f'./raw_data/XML_data/{company}/{company} {start_year}.xml',
-                 f'./raw_data/XML_data/{company}/{company} {start_year + 1}.xml',
-                 f'./raw_data/XML_data/{company}/{company} {start_year + 2}.xml',
-                 f'./raw_data/XML_data/{company}/{company} {start_year + 3}.xml',
-                 f'./raw_data/XML_data/{company}/{company} {start_year + 4}.xml',
-                 f'./raw_data/XML_data/{company}/{company} {start_year + 5}.xml']
+    xml_files = [f'./rawdata/XML_data/{company}/{company} {start_year}.xml',
+                 f'./rawdata/XML_data/{company}/{company} {start_year + 1}.xml',
+                 f'./rawdata/XML_data/{company}/{company} {start_year + 2}.xml',
+                 f'./rawdata/XML_data/{company}/{company} {start_year + 3}.xml',
+                 f'./rawdata/XML_data/{company}/{company} {start_year + 4}.xml',
+                 f'./rawdata/XML_data/{company}/{company} {start_year + 5}.xml']
     
     # Check if the XML file for 2023 exists for LTIM company
     if company == 'LTIMindtree Limited' and not os.path.exists(xml_files[-1]):
@@ -142,5 +142,5 @@ for index, row in combined_df.iterrows():
 
 
 # Save the combined DataFrame to a new CSV file
-combined_csv_file = './raw_data/India_raw_data.csv'
+combined_csv_file = './rawdata/India_raw_data.csv'
 combined_df.to_csv(combined_csv_file, index=False)
