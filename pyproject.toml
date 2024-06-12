@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ntu x ecv capstone"
+version = "0.1.0"
+description = "Global Ecloud Companies financial metrics analysis"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.2"
+numpy = "^1.26.4"
+requests = "^2.31.0"
+zipp = "^3.18.2"
+scikit-learn = "^1.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
